@@ -1,34 +1,47 @@
 package ru.netology.domain;
 
 public class Radio {
+    private int maxRadioStation = 9;
+    private int minRadioStation = 0;
+    private int maxVolume = 100;
+    private int minVolume = 0;
 
-    private int currentVolume;
-    private int currentRadioStation;
+    private int currentVolume = minVolume;
+    private int currentRadioStation = minRadioStation;
+
+    public Radio() {
+    }
+
+    public Radio(int minRadioStation, int maxRadioStation) {
+        this.minRadioStation = minRadioStation;
+        this.maxRadioStation = maxRadioStation;
+    }
+
 
     public void nextStation() {
-        if (currentRadioStation < 9) {
+        if (currentRadioStation < maxRadioStation) {
             currentRadioStation++;
         } else {
-            currentRadioStation = 0;
+            currentRadioStation = minRadioStation;
         }
     }
 
     public void prevStation() {
-        if (currentRadioStation > 0) {
+        if (currentRadioStation > minRadioStation) {
             currentRadioStation--;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = maxRadioStation;
         }
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
     }
@@ -46,12 +59,20 @@ public class Radio {
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation < 0) {
+        if (currentRadioStation < minRadioStation) {
             return;
         }
-        if (currentRadioStation > 9) {
+        if (currentRadioStation > maxRadioStation) {
             return;
         }
         this.currentRadioStation = currentRadioStation;
+    }
+
+    public int getMaxRadioStation() {
+        return maxRadioStation;
+    }
+
+    public int getMinRadioStation() {
+        return minRadioStation;
     }
 }

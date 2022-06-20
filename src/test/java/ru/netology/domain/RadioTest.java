@@ -9,6 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
     Radio radio = new Radio();
 
+
+    @Test
+    void checkMinMaxRadioStation() {
+        Radio radio = new Radio(0, 9);
+        assertEquals(0, radio.getMinRadioStation());
+        assertEquals(9, radio.getMaxRadioStation());
+    }
+
+
     @Test
     void stationValueInBoards1() {
         radio.setCurrentRadioStation(5);
@@ -64,7 +73,6 @@ class RadioTest {
     }
 
 
-
     @Test
     void increaseVolumeLeve() {
         radio.setCurrentVolume(2);
@@ -81,9 +89,9 @@ class RadioTest {
 
     @Test
     void maxIncreaseVolumeLeve() {
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
@@ -92,14 +100,6 @@ class RadioTest {
         radio.decreaseVolume();
         assertEquals(0, radio.getCurrentVolume());
     }
-
-
-
-
-
-
-
-
 
 
 }
