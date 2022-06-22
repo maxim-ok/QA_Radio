@@ -11,10 +11,51 @@ class RadioTest {
 
 
     @Test
-    void checkMinMaxRadioStation() {
-        Radio radio = new Radio(0, 9);
-        assertEquals(0, radio.getMinRadioStation());
-        assertEquals(9, radio.getMaxRadioStation());
+    void checkSettingRadioStation() {
+        radio.setRadioStation(7);
+        assertEquals(7, radio.getCurrentRadioStation());
+    }
+
+
+    @Test
+    void checkSettingRadioStation1() {
+        radio.setRadioStation(78);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    void checkSettingRadioStation2() {
+        radio.setRadioStation(10);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+
+    @Test
+    void checkZeroSettingsRadioStation() {
+        radio.setRadioStation(0);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+
+    @Test
+    void checkMinSettingsRadioStation() {
+        radio.setRadioStation(-7);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+
+    @Test
+    void shouldSetRadioStation() {
+        radio.setAmountRadioStations(27);
+        assertEquals(27, radio.getAmountRadioStations());
+
+    }
+
+
+    @Test
+    void createRadioObject() {
+        Radio radio = new Radio(88);
+        assertEquals(88, radio.getAmountRadioStations());
     }
 
 
